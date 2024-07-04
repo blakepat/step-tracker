@@ -13,6 +13,7 @@ struct HealthKitPermissionPrimingView: View {
     @Environment(HealthKitManager.self) private var hkManager
     @Environment(\.dismiss) private var dismiss
     @State private var isShowingHealthKitPermissions = false
+    @Binding var hasSeen: Bool
     
     
     var description = """
@@ -40,12 +41,14 @@ struct HealthKitPermissionPrimingView: View {
             }
             
             Button("Connect Apple Health") {
-                
+                isShowingHealthKitPermissions = true
             }
             .buttonStyle(.borderedProminent)
             .tint(.pink)
         }
         .padding(30)
+        .interactiveDismissDisabled()
+        .onAppear { hasSeen = true }
         .healthDataAccessRequest(store: hkManager.store,
                                  shareTypes: hkManager.types,
                                  readTypes: hkManager.types,
@@ -61,6 +64,6 @@ struct HealthKitPermissionPrimingView: View {
 }
 
 #Preview {
-    HealthKitPermissionPrimingView()
+    HealthKitPermissionPrimingView(hasSeen: .constant(false))
         .environment(HealthKitManager())
 }
