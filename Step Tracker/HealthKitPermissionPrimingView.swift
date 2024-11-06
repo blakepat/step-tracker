@@ -17,10 +17,10 @@ struct HealthKitPermissionPrimingView: View {
     
     
     var description = """
-    This app displays your step and weight data in interactive charts.
-    
-    You can also add new step or weight data to Apple Health from this app. Your data is private and secured.
-    """
+        This app displays your step and weight data in interactive charts.
+        
+        You can also add new step or weight data to Apple Health from this app. Your data is private and secured.
+        """
     
     var body: some View {
         VStack( spacing: 130) {
