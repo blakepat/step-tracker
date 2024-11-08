@@ -20,7 +20,6 @@ struct StepBarChart: View {
         return chartData.first {
             Calendar.current.isDate(rawSelectedDate, inSameDayAs: $0.date)
         }
-        
     }
     
     var avgStepCount: Double {
